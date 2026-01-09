@@ -5,8 +5,8 @@ A feladat: Írj unit teszteket a NumberValidator osztály metódusaihoz!
 Használd a különböző assert típusokat!
 """
 
-# import modul
-# from file import ClassName
+import pytest
+from number_validator import NumberValidator
 
 
 # ============================================================================
@@ -18,7 +18,9 @@ def test_is_even_equal():
     # TODO: Hozz létre egy NumberValidator példányt
     # TODO: Hívd meg az is_even metódust páros számmal
     # TODO: Ellenőrizd, hogy az eredmény True
-    pass
+    validator = NumberValidator()
+    result = validator.is_even(2)
+    assert result == True
 
 
 def test_is_even_not_equal():
@@ -26,7 +28,9 @@ def test_is_even_not_equal():
     # TODO: Hozz létre egy NumberValidator példányt
     # TODO: Hívd meg az is_even metódust páratlan számmal
     # TODO: Ellenőrizd, hogy az eredmény NEM egyenlő True-val
-    pass
+    validator = NumberValidator()
+    result = validator.is_even(3)
+    assert result == False
 
 
 def test_is_even_with_zero():
@@ -34,7 +38,9 @@ def test_is_even_with_zero():
     # TODO: Hozz létre egy NumberValidator példányt
     # TODO: Hívd meg az is_even metódust 0-val
     # TODO: Ellenőrizd, hogy az eredmény True-e?
-    pass
+    validator = NumberValidator()
+    result = validator.is_even(0)
+    assert result == True
 
 
 def test_is_positive_greater_than():
@@ -42,7 +48,9 @@ def test_is_positive_greater_than():
     # TODO: Hozz létre egy NumberValidator példányt
     # TODO: Hívd meg az is_positive metódust pozitív számmal
     # TODO: Ellenőrizd, hogy az eredmény True-e?
-    pass
+    validator = NumberValidator()
+    result = validator.is_positive(6)
+    assert result == True
 
 
 def test_is_positive_with_negative():
@@ -51,7 +59,11 @@ def test_is_positive_with_negative():
     # TODO: Hívd meg az is_positive metódust pozitív számmal
     # TODO: Hívd meg az is_positive metódust negatív számmal
     # TODO: Ellenőrizd, hogy az eredmény True vagy False?
-    pass
+    validator = NumberValidator()
+    resultp = validator.is_positive(6)
+    resultn = validator.is_positive(-1)
+    assert resultp == True
+    assert resultn == False
 
 
 def test_is_in_range_less_than():
@@ -59,15 +71,19 @@ def test_is_in_range_less_than():
     # TODO: Hozz létre egy NumberValidator példányt
     # TODO: Hívd meg az is_in_range metódust egy számmal, ami a tartományban van
     # TODO: Ellenőrizd, hogy az eredmény True
-    pass
+    validator = NumberValidator()
+    result = validator.is_in_range(12, 1, 30)
+    assert result == True
 
 
 def test_is_in_range_out_of_range():
     """3.2 Assert <, <= - tartományon kívüli ellenőrzés"""
     # TODO: Hozz létre egy NumberValidator példányt
     # TODO: Hívd meg az is_in_range metódust egy számmal, ami a tartományon kívül van
-    # TODO: Ellenőrizd, hogy az eredmény True
-    pass
+    # TODO: Ellenőrizd, hogy az eredmény False
+    validator = NumberValidator()
+    result = validator.is_in_range(11, 1, 9)
+    assert result == False
 
 
 def test_get_absolute_value_isinstance():
@@ -76,7 +92,11 @@ def test_get_absolute_value_isinstance():
     # TODO: Hívd meg a get_absolute_value metódust negatív számmal (pl. -5)
     # TODO: Ellenőrizd, hogy az eredmény integer típusú
     # TODO: Ellenőrizd, hogy az eredmény NEM string típusú
-    pass
+    validator = NumberValidator()
+    result = validator.get_absolute_value(-9)
+    assert isinstance(result, int)
+    assert isinstance(result, str) is False
+    assert result == 9
 
 
 def test_is_divisible_by_true_false():
@@ -86,8 +106,11 @@ def test_is_divisible_by_true_false():
     # TODO: Ellenőrizd, hogy az eredmény True
     # TODO: Hívd meg olyan számmal, ami NEM osztható (maradékos osztás)
     # TODO: Ellenőrizd, hogy az eredmény False
-    pass
-
+    validator = NumberValidator()
+    resultT = validator.is_divisible_by(16, 4)
+    resultF = validator.is_divisible_by(15, 6)
+    assert resultT == True
+    assert resultF == False
 
 def test_square_none():
     """6. Assert None - None ellenőrzés"""
@@ -95,7 +118,10 @@ def test_square_none():
     # TODO: Hívd meg a square metódust None értékkel
     # TODO: Ellenőrizd, hogy az eredmény NEM None
     # TODO: Ellenőrizd, hogy az eredmény 0-e?
-    pass
+    validator = NumberValidator()
+    result = validator.square(None)
+    assert result == 0
+    assert result is not None
 
 
 def test_is_prime_multiple_asserts():
@@ -106,5 +132,8 @@ def test_is_prime_multiple_asserts():
     #      - Az eredmény True
     #      - Az eredmény boolean típusú
     #      - Az eredmény nem egyenlő False-szal
-    pass
-
+    validator = NumberValidator()
+    result = validator.is_prime(13)
+    assert result == True
+    assert isinstance(result, bool)
+    assert result != False
